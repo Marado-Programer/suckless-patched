@@ -51,6 +51,9 @@ Patches
 -------
 
  - accessnthmonitor
- - 
+ - https://dwm.suckless.org/patches/actualfullscreen/
  - alternativetags
  - alwayscenter
+ - https://dwm.suckless.org/patches/alwaysfullscreen/
+ - alwaysontop
+ 
