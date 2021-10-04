@@ -1,0 +1,31 @@
+anysize
+blinking cursor
+bold is not bright
+clipboard
+copyurl
+csi 22 23
+cyclefonts
+desktopentry
+dynamic cursor color
+font2
+invert
+ISO 14755
+keyboard_select
+scrollback
+Ligature support
+netwmicon
+New terminal in current directory
+open_copied_url
+OSC 10, 11, 12#2
+relativeborder
+Right click to plumb
+spoiler
+swapmouse
+themed_cursor
+title parsing fix
+undercurl
+vertcenter
+Visual bell 2
+w3m images
+xclearwin
+Xresources
