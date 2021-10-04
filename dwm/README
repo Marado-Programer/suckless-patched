@@ -50,10 +50,13 @@ and (re)compiling the source code.
 Patches
 -------
 
+links may be added
+
  - accessnthmonitor
  - https://dwm.suckless.org/patches/actualfullscreen/
  - alternativetags
  - alwayscenter
  - https://dwm.suckless.org/patches/alwaysfullscreen/
  - alwaysontop
- 
+ - https://dwm.suckless.org/patches/aspectresize/
+ - attachdirection
