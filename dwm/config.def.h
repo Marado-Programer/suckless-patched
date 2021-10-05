@@ -4,11 +4,11 @@
 static unsigned int borderpx  		= 4;        /* border pixel of windows */
 static unsigned int snap      		= 32;       /* snap pixel */
 static int showbar            		= 1;        /* 0 means no bar */
-static const int topbar             		= 1;        /* 0 means bottom bar */
-static const int extrabar           = 1;        /* 0 means no extra bar */
-static const int extrabarright      = 1;        /* 1 means extra bar text on right */
-static const char statussep         = ';';      /* separator between status bars */
-static const int startontag         = 0;        /* 0 means no tag active on start */
+static const int topbar             	= 1;        /* 0 means bottom bar */
+static const int showextrabar          	= 1;        /* 0 means no extra bar */
+static const int extrabarright      	= 1;        /* 1 means extra bar text on right */
+static const char statussep         	= ';';      /* separator between status bars */
+static const int startontag         	= 1;        /* 0 means no tag active on start */
 static const int user_bh      		= 16;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int vertpad            	= 8;       /* vertical padding of bar */
 static const int sidepad            	= 8;       /* horizontal padding of bar */
@@ -28,9 +28,9 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] =			  { "home", "code", "sys", "docs", "mail", "firefox", "chromium", "music", "test" };
-static const char *tagsalt[] = 		  { "1", 	"2", 	"3",   "4",    "5",    "6", 	  "7", 		  "8", 	   "9" };
-static const char *defaulttagapps[] = { NULL, 	NULL, 	"st",  NULL,   NULL,   "firefox", NULL, 	  NULL,    NULL };
+static const char *tags[] = 		{ "home", "code", "sys", "docs", "mail", "firefox", "chromium", "music", "test" };
+static const char *tagsalt[] = 		{ "1", 	  "2", 	  "3",   "4",    "5",    "6", 	    "7", 	"8", 	 "9" };
+static const char *defaulttagapps[] = 	{ NULL,   NULL,   "st",  NULL,   NULL,   "firefox", NULL, 	NULL,    NULL };
 static const int momentaryalttags = 1; /* 1 means alttags will show only when key is held */
 
 static const Rule rules[] = {
@@ -111,7 +111,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_s,      spawndefault,   {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_b,      toggleextrabar, {0} },
+	{ MODKEY|ShiftMask,             XK_b,      toggleextrabar, {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },

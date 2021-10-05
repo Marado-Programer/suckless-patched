@@ -55,7 +55,7 @@ links may be added
  - accessnthmonitor
  - https://dwm.suckless.org/patches/actualfullscreen/
  - alternativetags
- - alwayscenter
+ - alwayscenter (REMOVE)
  - https://dwm.suckless.org/patches/alwaysfullscreen/
  - alwaysontop
  - https://dwm.suckless.org/patches/aspectresize/
@@ -66,7 +66,7 @@ links may be added
  - bottomstack
  - https://dwm.suckless.org/patches/canfocusfloating/
  - center
- - center first windowy
+ - center first window
  - centeredmaster
  - centeredwindowname (has a bug)
  - cfacts
@@ -83,7 +83,6 @@ links may be added
  - https://dwm.suckless.org/patches/destroyfocus/
  - dmenumatchtop
  - dragmfact
- - dualstatus
  - emptyview
  - https://dwm.suckless.org/patches/exresize/
- - extrabar
+ - extrabar + dualstatus
