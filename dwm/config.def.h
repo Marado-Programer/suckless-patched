@@ -5,18 +5,18 @@ static unsigned int borderpx  		= 4;        /* border pixel of windows */
 static unsigned int snap      		= 32;       /* snap pixel */
 static int showbar            		= 1;        /* 0 means no bar */
 static int topbar             		= 1;        /* 0 means bottom bar */
-static const int user_bh      		= 15;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const int vertpad            = 16;       /* vertical padding of bar */
-static const int sidepad            = 16;       /* horizontal padding of bar */
-static char font[]            		= "Fira Code:size=12";
-static char dmenufont[]       		= "Fira Code:size=12";
-static const char *fonts[]			= { font };
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#005577";
-static char selbgcolor[]            = "#005577";
+static const int user_bh      		= 16;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int vertpad            	= 8;       /* vertical padding of bar */
+static const int sidepad            	= 8;       /* horizontal padding of bar */
+static char font[]            		= "Fira Code:size=9";
+static char dmenufont[]       		= "Fira Code:size=9";
+static const char *fonts[]		= { font };
+static char normbgcolor[]           	= "#222222";
+static char normbordercolor[]       	= "#444444";
+static char normfgcolor[]           	= "#bbbbbb";
+static char selfgcolor[]            	= "#eeeeee";
+static char selbordercolor[]        	= "#005577";
+static char selbgcolor[]            	= "#005577";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -24,18 +24,18 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "home", "code", "sys", "docs", "mail", "firefox", "chromium", "music", "test" };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held */
+static const int momentaryalttags = 1; /* 1 means alttags will show only when key is held */
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
 };
 
 /* layout(s) */
@@ -80,19 +80,19 @@ static const char *termcmd[]  = { "st", NULL };
 ResourcePref resources[] = {
 		{ "font",               STRING,  &font },
 		{ "dmenufont",          STRING,  &dmenufont },
-		{ "color0",        STRING,  &normbgcolor },
-		{ "color8",    STRING,  &normbordercolor },
-		{ "color7",        STRING,  &normfgcolor },
-		{ "color6",         STRING,  &selbgcolor },
-		{ "color14",     STRING,  &selbordercolor },
-		{ "color15",         STRING,  &selfgcolor },
+		{ "color0",        	STRING,  &normbgcolor },
+		{ "color8",    		STRING,  &normbordercolor },
+		{ "color7",       	STRING,  &normfgcolor },
+		{ "color6",         	STRING,  &selbgcolor },
+		{ "color14",     	STRING,  &selbordercolor },
+		{ "color15",         	STRING,  &selfgcolor },
 		{ "borderpx",          	INTEGER, &borderpx },
-		{ "snap",          		INTEGER, &snap },
+		{ "snap",          	INTEGER, &snap },
 		{ "showbar",          	INTEGER, &showbar },
 		{ "topbar",          	INTEGER, &topbar },
 		{ "nmaster",          	INTEGER, &nmaster },
 		{ "resizehints",       	INTEGER, &resizehints },
-		{ "mfact",      	 	FLOAT,   &mfact },
+		{ "mfact",      	FLOAT,   &mfact },
 };
 
 static Key keys[] = {
