@@ -34,15 +34,16 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     iscentered   CenterThisWindow?	isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           0,					1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,					0,           -1 },
-	{ "St",		  NULL,       NULL,		  0,			1,			 1,					0,			 -1 },
+	{ "Gimp",     NULL,       NULL,       0,            0,           0,			1,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,			0,           -1 },
+	{ "St",	      NULL,       NULL,	      0,	    1,		 0,			0,	     -1 },
 };
 
 /* layout(s) */
 static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int decorhints  = 1;    /* 1 means respect decoration hints */
 static const int attachdirection = 4;    /* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
@@ -120,16 +121,16 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,				XK_t,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ControlMask,			XK_t,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|ShiftMask,				XK_m,      setlayout,      {.v = &layouts[5]} },
-	{ MODKEY|ControlMask,			XK_m,      setlayout,      {.v = &layouts[6]} },
+	{ MODKEY|ShiftMask,		XK_t,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ControlMask,		XK_t,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,		XK_m,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ControlMask,		XK_m,      setlayout,      {.v = &layouts[6]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[7]} },
 	{ MODKEY,                       XK_space,  setlayout,  	   {0} },
-	{ MODKEY|ControlMask,			XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglealwaysontop, {0} },
+	{ MODKEY|ControlMask,           XK_space,  togglealwaysontop, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },

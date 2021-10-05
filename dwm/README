@@ -68,7 +68,7 @@ links may be added
  - center
  - center first windowy
  - centeredmaster
- - centeredwindowname
+ - centeredwindowname (has a bug)
  - cfacts
  - https://dwm.suckless.org/patches/colorbar/
  - https://dwm.suckless.org/patches/columngaps/
@@ -77,3 +77,5 @@ links may be added
  - corpwindows
  - cursorwarp
  - cyclelayouts
+ - https://dwm.suckless.org/patches/deck/
+ - decoration hints
