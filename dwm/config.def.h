@@ -6,6 +6,7 @@ static unsigned int snap      		= 32;       /* snap pixel */
 static int showbar            		= 1;        /* 0 means no bar */
 static const int topbar             		= 1;        /* 0 means bottom bar */
 static const int extrabar           = 1;        /* 0 means no extra bar */
+static const int startontag         = 0;        /* 0 means no tag active on start */
 static const int user_bh      		= 16;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int vertpad            	= 8;       /* vertical padding of bar */
 static const int sidepad            	= 8;       /* horizontal padding of bar */
@@ -38,7 +39,6 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     iscentered   CenterThisWindow?	isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            0,           0,			1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,			0,           -1 },
-	{ "St",	      NULL,       NULL,	      0,	    1,		 1,			0,	     -1 },
 };
 
 /* layout(s) */
