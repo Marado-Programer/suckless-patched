@@ -5,7 +5,9 @@ static unsigned int borderpx  		= 4;        /* border pixel of windows */
 static unsigned int snap      		= 32;       /* snap pixel */
 static int showbar            		= 1;        /* 0 means no bar */
 static int topbar             		= 1;        /* 0 means bottom bar */
-static const int user_bh      		= 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh      		= 15;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int vertpad            = 16;       /* vertical padding of bar */
+static const int sidepad            = 16;       /* horizontal padding of bar */
 static char font[]            		= "Fira Code:size=12";
 static char dmenufont[]       		= "Fira Code:size=12";
 static const char *fonts[]			= { font };
