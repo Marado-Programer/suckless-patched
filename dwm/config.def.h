@@ -4,7 +4,7 @@
 static unsigned int borderpx  		= 4;        /* border pixel of windows */
 static unsigned int snap      		= 32;       /* snap pixel */
 static int showbar            		= 1;        /* 0 means no bar */
-static int topbar             		= 1;        /* 0 means bottom bar */
+static const int topbar             		= 1;        /* 0 means bottom bar */
 static const int user_bh      		= 16;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int vertpad            	= 8;       /* vertical padding of bar */
 static const int sidepad            	= 8;       /* horizontal padding of bar */
