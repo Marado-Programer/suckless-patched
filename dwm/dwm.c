@@ -274,7 +274,6 @@ static void bstackhoriz(Monitor *m);
 static void load_xresources(void);
 static void resource_load(XrmDatabase db, char *name, enum resource_type rtype, void *dst);
 
-static void keyrelease(XEvent *e);
 static void combotag(const Arg *arg);
 static void comboview(const Arg *arg);
 
@@ -325,11 +324,6 @@ struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
 /* function implementations */
 static int combo = 0;
-
-void
-keyrelease(XEvent *e) {
-	combo = 0;
-}
 
 void
 combotag(const Arg *arg) {
@@ -1192,6 +1186,8 @@ keypress(XEvent *e)
 void
 keyrelease(XEvent *e)
 {
+	combo = 0;
+	
 	unsigned int i;
 	KeySym keysym;
 	XKeyEvent *ev;
