@@ -89,20 +89,13 @@ static const char *termcmd[]  = { "st", NULL };
  */
 ResourcePref resources[] = {
 		{ "font",               STRING,  &font },
-		{ "dmenufont",          STRING,  &dmenufont },
+		{ "font",          	STRING,  &dmenufont },
 		{ "color0",        	STRING,  &normbgcolor },
 		{ "color8",    		STRING,  &normbordercolor },
 		{ "color7",       	STRING,  &normfgcolor },
 		{ "color6",         	STRING,  &selbgcolor },
 		{ "color14",     	STRING,  &selbordercolor },
 		{ "color15",         	STRING,  &selfgcolor },
-		{ "borderpx",          	INTEGER, &borderpx },
-		{ "snap",          	INTEGER, &snap },
-		{ "showbar",          	INTEGER, &showbar },
-		{ "topbar",          	INTEGER, &topbar },
-		{ "nmaster",          	INTEGER, &nmaster },
-		{ "resizehints",       	INTEGER, &resizehints },
-		{ "mfact",      	FLOAT,   &mfact },
 };
 
 static Key keys[] = {
