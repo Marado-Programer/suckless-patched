@@ -5,9 +5,9 @@ static unsigned int borderpx  		= 4;        /* border pixel of windows */
 static unsigned int snap      		= 32;       /* snap pixel */
 static int showbar            		= 1;        /* 0 means no bar */
 static const int topbar             	= 1;        /* 0 means bottom bar */
-static const int showextrabar          	= 1;        /* 0 means no extra bar */
-static const int extrabarright      	= 1;        /* 1 means extra bar text on right */
-static const char statussep         	= ';';      /* separator between status bars */
+static const int showextrabar       = 1;        /* 0 means no extra bar */
+static const int extrabarright      = 1;        /* 1 means extra bar text on right */
+static const char statussep         = ';';      /* separator between status bars */
 static const int startontag         	= 1;        /* 0 means no tag active on start */
 static const int user_bh      		= 16;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int vertpad            	= 8;       /* vertical padding of bar */
@@ -130,8 +130,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ControlMask,           XK_space,  togglealwaysontop, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_0,      comboview,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      combotag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },

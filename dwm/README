@@ -68,7 +68,6 @@ links may be added
  - center
  - center first window
  - centeredmaster
- - centeredwindowname (has a bug)
  - cfacts
  - https://dwm.suckless.org/patches/colorbar/
  - https://dwm.suckless.org/patches/columngaps/
@@ -85,4 +84,4 @@ links may be added
  - dragmfact
  - emptyview
  - https://dwm.suckless.org/patches/exresize/
- - extrabar + dualstatus
+ - a mix of extrabar + dualstatus

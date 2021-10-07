@@ -315,7 +315,6 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 	[EnterNotify] = enternotify,
 	[Expose] = expose,
 	[FocusIn] = focusin,
-	[KeyRelease] = keyrelease,
 	[KeyPress] = keypress,
 	[KeyRelease] = keyrelease,
 	[MappingNotify] = mappingnotify,
@@ -826,7 +825,7 @@ configurenotify(XEvent *e)
 						resizeclient(c, m->mx, m->my, m->mw, m->mh);
 				XMoveResizeWindow(dpy, m->barwin, m->wx + sp, m->by + vp, m->ww -  2 * sp, bh);
 				XMoveResizeWindow(dpy, m->extrabarwin, m->wx, m->eby, m->ww, bh);
-			}
+            }
 			focus(NULL);
 			arrange(NULL);
 		}
@@ -1044,8 +1043,7 @@ drawbar(Monitor *m)
 		drw_rect(drw, 0, 0, m->ww, bh, 1, 1);
 		if (extrabarright) {
 			sw = TEXTW(estext) - lrpad + 2; /* 2px right padding */
-			drw_text(drw, m->ww - tw - 2 * sp, 0, tw, bh, 0, stext, 0);
-			drw_text(drw, m->ww - sw - 2 * sp, 0, sw, bh, 0, estext, 0);
+			drw_text(drw, m->ww - sw, 0, sw, bh, 0, estext, 0);
 		} else {
 			drw_text(drw, 0, 0, mons->ww, bh, 0, estext, 0);
 		}
@@ -2282,10 +2280,10 @@ togglebar(const Arg *arg)
 void
 toggleextrabar(const Arg *arg)
 {
-	selmon->showextrabar = !selmon->showextrabar;
-	updatebarpos(selmon);
-	XMoveResizeWindow(dpy, selmon->extrabarwin, selmon->wx, selmon->eby, selmon->ww + 2, bh);
-	arrange(selmon);
+    selmon->showextrabar = !selmon->showextrabar;
+    updatebarpos(selmon);
+    XMoveResizeWindow(dpy, selmon->extrabarwin, selmon->wx, selmon->eby, selmon->ww, bh);
+    arrange(selmon);
 }
 
 void
@@ -2422,16 +2420,16 @@ updatebars(void)
 	XClassHint ch = {"dwm", "dwm"};
 	for (m = mons; m; m = m->next) {
 		if (!m->barwin) {
-			m->barwin = XCreateWindow(dpy, root, m->wx + sp, m->by + vp, m->ww - 2 * sp, bh, 0, DefaultDepth(dpy, screen), CopyFromParent, DefaultVisual(dpy, screen), CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
-		XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
-		XMapRaised(dpy, m->barwin);
-		XSetClassHint(dpy, m->barwin, &ch);
+			m->barwin = XCreateWindow(dpy, root, m->wx, m->by, m->ww, bh, 0, DefaultDepth(dpy, screen),CopyFromParent, DefaultVisual(dpy, screen), CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
+			XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
+			XMapRaised(dpy, m->barwin);
+			XSetClassHint(dpy, m->barwin, &ch);
 		}
 		if (!m->extrabarwin) {
 			m->extrabarwin = XCreateWindow(dpy, root, m->wx, m->eby, m->ww, bh, 0, DefaultDepth(dpy, screen), CopyFromParent, DefaultVisual(dpy, screen), CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
-		XDefineCursor(dpy, m->extrabarwin, cursor[CurNormal]->cursor);
-		XMapRaised(dpy, m->extrabarwin);
-		XSetClassHint(dpy, m->extrabarwin, &ch);
+			XDefineCursor(dpy, m->extrabarwin, cursor[CurNormal]->cursor);
+			XMapRaised(dpy, m->extrabarwin);
+			XSetClassHint(dpy, m->extrabarwin, &ch);
 		}
 	}
 }
@@ -2441,19 +2439,19 @@ updatebarpos(Monitor *m)
 {
 	m->wy = m->my;
 	m->wh = m->mh;
-	m->wh -= bh * m->showbar * 2;
+	m->wh -= bh * m->showbar;
+    m->wh -= bh * m->showextrabar;
 	m->wy = m->showbar ? m->wy + bh : m->wy;
+	m->wy = m->showextrabar ? m->wy + bh : m->wy;
 	if (m->showbar)
-		m->by = m->topbar ? m->wy - bh : m->wy + m->wh + vertpad;
+		m->by = m->topbar ? m->wy - bh : m->wy + m->wh;
 	else
-		m->by = -bh - vp;
-	
+ 		m->by = -bh;
 
-	if (m->showextrabar)
+    if (m->showextrabar)
 		m->eby = m->topbar ? m->wy + m->wh : m->wy - bh;
 	else
 		m->eby = -bh;
-	
 }
 
 void
