@@ -10,8 +10,8 @@ static const int extrabarright      = 1;        /* 1 means extra bar text on rig
 static const char statussep         = ';';      /* separator between status bars */
 static const int startontag         	= 1;        /* 0 means no tag active on start */
 static const int user_bh      		= 16;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const int vertpad            	= 8;       /* vertical padding of bar */
-static const int sidepad            	= 8;       /* horizontal padding of bar */
+static const int vertpad            	= 0;       /* vertical padding of bar */
+static const int sidepad            	= 0;       /* horizontal padding of bar */
 static char font[]            		= "Fira Code:size=9";
 static char dmenufont[]       		= "Fira Code:size=9";
 static const char *fonts[]		= { font };
