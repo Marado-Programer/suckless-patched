@@ -2420,7 +2420,7 @@ updatebars(void)
 	XClassHint ch = {"dwm", "dwm"};
 	for (m = mons; m; m = m->next) {
 		if (!m->barwin) {
-			m->barwin = XCreateWindow(dpy, root, m->wx, m->by, m->ww, bh, 0, DefaultDepth(dpy, screen),CopyFromParent, DefaultVisual(dpy, screen), CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
+			m->barwin = XCreateWindow(dpy, root, m->wx + sp, m->by + vp, m->ww - 2 * sp, bh, 0, DefaultDepth(dpy, screen),CopyFromParent, DefaultVisual(dpy, screen), CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
 			XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
 			XMapRaised(dpy, m->barwin);
 			XSetClassHint(dpy, m->barwin, &ch);
@@ -2439,11 +2439,14 @@ updatebarpos(Monitor *m)
 {
 	m->wy = m->my;
 	m->wh = m->mh;
-	m->wh -= bh * m->showbar;
+	m->wh -= vertpad + bh * m->showbar;
+	//m->wh -= bh * m->showbar;
     m->wh -= bh * m->showextrabar;
-	m->wy = m->showbar ? m->wy + bh : m->wy;
+	m->wy = m->showbar ? m->wy + bh + vp : m->wy;
+	//m->wy = m->showbar ? m->wy + bh : m->wy;
 	if (m->showbar)
-		m->by = m->topbar ? m->wy - bh : m->wy + m->wh;
+		m->by = m->topbar ? m->wy - bh : m->wy + m->wh + vertpad;
+		//m->by = m->topbar ? m->wy - bh : m->wy + m->wh;
 	else
  		m->by = -bh;
 
