@@ -28,9 +28,9 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = 		{ "home", "code", "sys", "docs", "mail", "firefox", "chromium", "music", "test" };
-static const char *tagsalt[] = 		{ "1", 	  "2", 	  "3",   "4",    "5",    "6", 	    "7", 	"8", 	 "9" };
-static const char *defaulttagapps[] = 	{ NULL,   NULL,   "st",  NULL,   NULL,   "firefox", NULL, 	NULL,    NULL };
+static const char *tags[] = 		{ "home", "code", "sys", "docs", "mail", "www",     "music", "test" };
+static const char *tagsalt[] = 		{ "1", 	  "2", 	  "3",   "4",    "5",    "6", 	    "7",     "8" };
+static const char *defaulttagapps[] = 	{ NULL,   NULL,   "st",  NULL,   NULL,   "firefox", NULL,    NULL };
 static const int momentaryalttags = 1; /* 1 means alttags will show only when key is held */
 
 static const Rule rules[] = {
