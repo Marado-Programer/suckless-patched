@@ -51,6 +51,7 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 static const int attachdirection = 4;    /* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
 static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -58,6 +59,8 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 	{ "TTT",      bstack },
 	{ "===",      bstackhoriz },
+	{ "[@]",      spiral },
+ 	{ "[\\]",      dwindle },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
 	{ "|||",      col },
@@ -122,9 +125,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,		XK_t,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ControlMask,		XK_t,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|ShiftMask,		XK_m,      setlayout,      {.v = &layouts[5]} },
-	{ MODKEY|ControlMask,		XK_m,      setlayout,      {.v = &layouts[6]} },
-	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[7]} },
+	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[6]} },
+	{ MODKEY|ShiftMask,		XK_m,      setlayout,      {.v = &layouts[7]} },
+	{ MODKEY|ControlMask,		XK_m,      setlayout,      {.v = &layouts[8]} },
+	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[9]} },
 	{ MODKEY,                       XK_space,  setlayout,  	   {0} },
 	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
