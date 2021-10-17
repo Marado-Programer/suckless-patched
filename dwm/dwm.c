@@ -2387,6 +2387,7 @@ tile(Monitor *m)
 							ty += HEIGHT(c) - c->bw;
 						}
 			}
+		}
 }
 
 void
