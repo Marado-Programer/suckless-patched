@@ -85,3 +85,8 @@ links may be added
  - emptyview
  - https://dwm.suckless.org/patches/exresize/
  - a mix of extrabar + dualstatus
+ - fakefullscreen
+ - fibonacci
+ - https://dwm.suckless.org/patches/flextile/
+ - https://dwm.suckless.org/patches/floatrules/
+ - focus adjacent tag
