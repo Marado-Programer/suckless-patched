@@ -1,22 +1,32 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static unsigned int borderpx  		= 4;        /* border pixel of windows */
-static const int startwithgaps[]    = { 1 };	/* 1 means gaps are used by default, this can be customized for each tag */
-static const unsigned int gappx[]   = { 8 };   /* default gap between windows in pixels, this can be customized for each tag */
-static unsigned int snap      		= 32;       /* snap pixel */
-static int showbar            		= 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const int showextrabar       = 1;        /* 0 means no extra bar */
-static const int extrabarright      = 1;        /* 1 means extra bar text on right */
-static const char statussep         = ';';      /* separator between status bars */
-static const int startontag         	= 1;        /* 0 means no tag active on start */
-static const int user_bh      		= 16;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const int vertpad            	= 0;       /* vertical padding of bar */
-static const int sidepad            	= 0;       /* horizontal padding of bar */
-static char font[]            		= "Fira Code:size=9";
-static char dmenufont[]       		= "Fira Code:size=9";
-static const char *fonts[]		= { font };
+static unsigned int borderpx  		= 2;		/* border pixel of windows */
+static const int startwithgaps[]	= { 1 };	/* 1 means gaps are used by default, this can be customized for each tag */
+static const unsigned int gappx[]	= { 4 };	/* default gap between windows in pixels, this can be customized for each tag */
+static unsigned int snap      		= 32;		/* snap pixel */
+static int showbar            		= 1;		/* 0 means no bar */
+static const int topbar			= 1;		/* 0 means bottom bar */
+static const int showextrabar		= 1;		/* 0 means no extra bar */
+static const int extrabarright		= 1;		/* 1 means extra bar text on right */
+static const char statussep		= '@';		/* separator between status bars */
+static const int startontag         	= 1;		/* 0 means no tag active on start */
+static const int barheight      	= 12;		// 0 means that dwm will calculate bar height, >= 1 means dwm will barheight as bar height
+static const int vertpad            	= 2;		// vertical padding of bar
+static const int sidepad            	= 2;		// horizontal padding of bar
+static char font[]            		= "Fira Code:style=Regular:size=9:antialias=true:autohint=true";
+static char dmenufont[]       		= "Fira Code:style=Regular:size=9:antialias=true:autohint=true";
+static const char *fonts[]		= { 
+	"Fira Code:style=Regular:pixelsize=9:antialias=true:autohint=true",
+	"Siji:style=Regular:pixelsize=9:antialias=true:autohint=true",
+	"OpenMoji=Regular:pixelsize=9:antialias=true:autohint=true",
+	"Noto Color Emoji=Regular:pixelsize=9:antialias=true:autohint=true",
+	"Standard Symbols PS=Regular:pixelsize=9:antialias=true:autohint=true",
+	"M+ 1c:style=Regular:pixelsize=9:antialias=true:autohint=true",
+	"M+ 1p:style=Regular:pixelsize=9:antialias=true:autohint=true",
+	"M+ 1m:style=Regular:pixelsize=9:antialias=true:autohint=true",
+	"M+ 1mn:style=Regular:pixelsize=9:antialias=true:autohint=true",
+};
 static char normbgcolor[]           	= "#222222";
 static char normbordercolor[]       	= "#444444";
 static char normfgcolor[]           	= "#bbbbbb";
@@ -32,7 +42,7 @@ static char *colors[][3] = {
 /* tagging */
 static const char *tags[] = 		{ "home", "code", "sys", "docs", "mail", "www",     "music", "test" };
 static const char *tagsalt[] = 		{ "1", 	  "2", 	  "3",   "4",    "5",    "6", 	    "7",     "8" };
-static const char *defaulttagapps[] = 	{ NULL,   NULL,   "st",  NULL,   NULL,   "firefox", NULL,    NULL };
+static const char *defaulttagapps[] = 	{ NULL,   "code",   "st",  NULL,   NULL,   "firefox", NULL,    NULL };
 static const int momentaryalttags = 1; /* 1 means alttags will show only when key is held */
 
 static const Rule rules[] = {
@@ -40,17 +50,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     iscentered   CenterThisWindow?	isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           0,			1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,			0,           -1 },
+	// class		instance    title       tags mask	centerIfFirst	iscentered	isfloating   monitor */
+	{ "St",			NULL,       NULL,       0,			1,				0,			0,           -1 },
 };
 
 /* layout(s) */
 static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int decorhints  = 1;    /* 1 means respect decoration hints */
-static const int attachdirection = 4;    /* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
+static const int attachdirection = 4;    // 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top
 static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 #include "fibonacci.c"
@@ -75,7 +84,7 @@ static const Layout layouts[] = {
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,             KEY,      combotag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
 	{ ALTMOD,			KEY,	  focusnthmon,	  {.i = TAG } }, \
 	{ ALTMOD|ShiftMask,		KEY,	  tagnthmon,	  {.i = TAG } },
@@ -120,7 +129,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_Tab,    comboview,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
@@ -135,7 +144,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_space,  setlayout,  	   {0} },
 	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ControlMask,           XK_space,  togglealwaysontop, {0} },
 	{ MODKEY,                       XK_0,      comboview,           {.ui = ~0 } },
@@ -178,9 +187,9 @@ static Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkClientWin,         MODKEY|ShiftMask, Button3,      resizemouse,    {.i = 1} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	{ ClkTagBar,            0,              Button1,        comboview,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+	{ ClkTagBar,            MODKEY,         Button1,        combotag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 

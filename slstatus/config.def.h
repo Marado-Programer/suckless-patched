@@ -65,8 +65,8 @@ static const char unknown_str[] = "N/A";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ run_command,  "%s|", 	    "amixer get Master | awk -F'[][]' 'END{ print $2 }'"},
-	{ run_command,  "%s|",      "~Documents/scripts/wifiStatus.sh"},
+	{ run_command,  "%s|", 	    "sh ~/suckless/dwmblocks/blocks.def/volume.sh"},
+	{ run_command,  "%s|",      "sh ~/Documents/scripts/wifiStatus.sh"},
 	{ disk_free,    "%s|",      "/"},
 	{ battery_perc, "%s%%|",    "BAT0" },
 	{ datetime,     "%s|",	    "%Y年%m月%d日"},

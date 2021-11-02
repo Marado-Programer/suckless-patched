@@ -53,9 +53,9 @@ Patches
 links may be added
 
  - accessnthmonitor
- - https://dwm.suckless.org/patches/actualfullscreen/
+ - actualfullscreen
+ - https://dwm.suckless.org/patches/adjacenttag/
  - alternativetags
- - alwayscenter (REMOVE)
  - https://dwm.suckless.org/patches/alwaysfullscreen/
  - alwaysontop
  - https://dwm.suckless.org/patches/aspectresize/
@@ -69,8 +69,8 @@ links may be added
  - center first window
  - centeredmaster
  - cfacts
- - https://dwm.suckless.org/patches/colorbar/
- - https://dwm.suckless.org/patches/columngaps/
+ - https://dwm.suckless.org/patches/clientspertag/
+ - columngaps
  - columns
  - combo
  - corpwindows
@@ -93,6 +93,5 @@ links may be added
  - focusmonmouse
  - https://dwm.suckless.org/patches/focusonclick/
  - https://dwm.suckless.org/patches/freespace/
- - fullscreen
  - functionalgaps
  - pertag

@@ -8,15 +8,23 @@
  *		0 = no border, 100 = border width is same as cell width
  */
 static char *fonts[] = {
-	"Fira Code:style=Regular:pixelsize=16:antialias=true:autohint=true",
+	"Fira Code:style=Regular:pixelsize=12:antialias=true:autohint=true",
 };
 /* Spare fonts */
 static char *font2[] = {
-	"Fira Code:style=Regular:pixelsize=16:antialias=true:autohint=true",
-	"M+ 1c:style=Regular:pixelsize=16:antialias=true:autohint=true",
-	"M+ 1p:style=Regular:pixelsize=16:antialias=true:autohint=true",
-	"M+ 1m:style=Regular:pixelsize=16:antialias=true:autohint=true",
-	"M+ 1mn:style=Regular:pixelsize=16:antialias=true:autohint=true",
+	"Siji=Regular:pixelsize=12:antialias=true:autohint=true",
+	"Noto Color Emoji=Regular:pixelsize=12:antialias=true:autohint=true",
+	"OpenMoji=Regular:pixelsize=12:antialias=true:autohint=true",
+	"Standard Symbols PS=Regular:pixelsize=12:antialias=true:autohint=true",
+	"AR PL UMing CN=Regular:pixelsize=12:antialias=true:autohint=true",
+	"AR PL UMing HK=Regular:pixelsize=12:antialias=true:autohint=true",
+	"AR PL UMing TW=Regular:pixelsize=12:antialias=true:autohint=true",
+	"AR PL UMing TW MBE=Regular:pixelsize=12:antialias=true:autohint=true",
+	"Fira Code:style=Regular:pixelsize=12:antialias=true:autohint=true",
+	"M+ 1c:style=Regular:pixelsize=12:antialias=true:autohint=true",
+	"M+ 1p:style=Regular:pixelsize=12:antialias=true:autohint=true",
+	"M+ 1m:style=Regular:pixelsize=12:antialias=true:autohint=true",
+	"M+ 1mn:style=Regular:pixelsize=12:antialias=true:autohint=true",
 };
 
 static size_t currentfont = 0;
@@ -288,8 +296,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_o,           opencopied,     {.v = "xdg-open"} },
 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
-	{ ControlMask,            XK_k,     	kscrollup,      {.i = -1} },
-	{ ControlMask,            XK_j, 	 	kscrolldown,    {.i = -1} },
+	{ ControlMask,          XK_k,     	kscrollup,      {.i = -1} },
+	{ ControlMask,          XK_j, 	 	kscrolldown,    {.i = -1} },
 	{ TERMMOD,		XK_Escape,	keyboard_select,{.i =  0} },
 	{ TERMMOD,		XK_I,		iso14755,	{.i =  0} },
 	{ TERMMOD,		XK_X,		invert,		{	} },

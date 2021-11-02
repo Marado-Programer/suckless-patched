@@ -1,0 +1,4 @@
+keyrelease() from alternativetags
+iscentered and isalawaysontop from alwaysontop
+needresize by autoresize
+vp sp by barpadding
